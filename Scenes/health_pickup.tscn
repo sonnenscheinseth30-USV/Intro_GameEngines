@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn5aoi56on4o2"]
+
+[ext_resource type="Texture2D" uid="uid://b3yd4ero00p5r" path="res://items/fruit.png" id="1_gvws8"]
+[ext_resource type="Script" uid="uid://bfwo4u4567cb1" path="res://Scripts/health_pickup.gd" id="1_lj2jr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj2jr"]
+atlas = ExtResource("1_gvws8")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18ac6"]
+atlas = ExtResource("1_gvws8")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ck8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj2jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18ac6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wbxn"]
+radius = 6.0
+height = 18.0
+
+[node name="health pickup" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_lj2jr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v1ck8")
+frame = 1
+frame_progress = 0.75594276
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7wbxn")

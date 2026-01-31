@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dka7f5uu0tk5i"]
+[gd_scene load_steps=17 format=3 uid="uid://dka7f5uu0tk5i"]
 
 [ext_resource type="Script" uid="uid://bb2b42jg4nqr3" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b73pygqeepri" path="res://characters/DinoSprites - doux.png" id="1_v0iea"]
@@ -91,6 +91,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dp3o"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(20, 3)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
@@ -101,7 +104,13 @@ scale = Vector2(1.2083333, 1.0416666)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape_Player" type="CollisionShape2D" parent="."]
 z_index = 5
 position = Vector2(2, -7)
 shape = SubResource("CircleShape2D_7dp3o")
+
+[node name="Stomp" type="Area2D" parent="."]
+
+[node name="Stomp_Collision" type="CollisionShape2D" parent="Stomp"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_cvnsp")

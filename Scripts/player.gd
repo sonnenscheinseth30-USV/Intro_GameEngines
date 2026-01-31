@@ -4,6 +4,10 @@ extends CharacterBody2D
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
+func stomp_bounce():
+	velocity.y=JUMP_VELOCITY * 0.8
+
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,3 +27,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+
+	
+
+	
