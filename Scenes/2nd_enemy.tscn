@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://drfn2r6xcws0x"]
+
+[ext_resource type="Texture2D" uid="uid://dp5mhqxsmmnfh" path="res://enemies/Gray Slime Spritesheet.png" id="1_6ylkv"]
+[ext_resource type="Script" uid="uid://bwucvnmilcwah" path="res://Scripts/2_nd_enemy.gd" id="1_yvaoq"]
+[ext_resource type="PackedScene" uid="uid://bkbh4rsmjpg7d" path="res://Scenes/killzone.tscn" id="2_yvaoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3wrp"]
+atlas = ExtResource("1_6ylkv")
+region = Rect2(80, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdwxw"]
+atlas = ExtResource("1_6ylkv")
+region = Rect2(152, 105, 19, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h4p8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3wrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdwxw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4l5hg"]
+radius = 24.020824
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ho2r"]
+size = Vector2(51.5, 4.75)
+
+[node name="2ndSlime" type="Node2D"]
+script = ExtResource("1_yvaoq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(34, 22.000002)
+scale = Vector2(3.3517544, 3.1190476)
+sprite_frames = SubResource("SpriteFrames_0h4p8")
+autoplay = "default"
+frame = 1
+frame_progress = 0.15854481
+
+[node name="killzone" parent="." instance=ExtResource("2_yvaoq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(29, 21)
+shape = SubResource("CircleShape2D_4l5hg")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(28, 20)
+target_position = Vector2(30, 1)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(30, 21)
+target_position = Vector2(-32, 1)
+
+[node name="StompArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2(29.25, -1.625)
+shape = SubResource("RectangleShape2D_1ho2r")
+
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
