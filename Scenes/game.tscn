@@ -2808,7 +2808,7 @@ position = Vector2(504, 1)
 [node name="health pickup" parent="." instance=ExtResource("10_ldgsr")]
 position = Vector2(536, -8)
 
-[node name="2ndSlime" parent="." instance=ExtResource("11_o5yvi")]
+[node name="2ndEnemy" parent="." instance=ExtResource("11_o5yvi")]
 position = Vector2(563, 25)
 
 [node name="Labels" type="Node" parent="."]
