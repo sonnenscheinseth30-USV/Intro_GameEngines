@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Intro_GameEngines"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="uid://cl2oxcs4kbbwl"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*res://Scenes/music.tscn"
 
 [input]
 

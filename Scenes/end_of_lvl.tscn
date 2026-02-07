@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs6hxpdf116kg"]
+
+[ext_resource type="Script" uid="uid://debo68fii5n70" path="res://Scripts/end_of_lvl.gd" id="1_8oupp"]
+[ext_resource type="Texture2D" uid="uid://d2051qoxy84hg" path="res://tilesets/props.png" id="1_ad72c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8oupp"]
+radius = 55.326305
+
+[node name="Tree" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_8oupp")
+
+[node name="Props" type="Sprite2D" parent="."]
+position = Vector2(531, 312)
+texture = ExtResource("1_ad72c")
+region_enabled = true
+region_rect = Rect2(118, 34, 117, 109)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(527, 308)
+shape = SubResource("CircleShape2D_8oupp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
