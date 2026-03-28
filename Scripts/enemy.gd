@@ -5,9 +5,6 @@ func _on_stomp_area_body_entered(body):
 		body.stomp_bounce()
 		die()
 		
-	var stomp_area: Area2D = $StompArea
-
-	stomp_area.monitoring = true
 
 func die():
 	queue_free()
